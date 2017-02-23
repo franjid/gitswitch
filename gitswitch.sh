@@ -38,8 +38,9 @@ emailChosen=$identitiyEmailArray[$identitiesArray[$option]]
 # Remove lines with previous references to the chosen email
 sed -i '' '/email = '$emailChosen'/d' $GIT_CONFIG_FILE
 
-# Comment out other emails in use
+# Uncomment previous commented emails as otherwise we end up with lines like #######email=whatever
 sed -i '' 's/#email = \(.*\)/email = \1/g' $GIT_CONFIG_FILE
+# Comment out any other email in use
 sed -i '' 's/email = \(.*\)/#email = \1/g' $GIT_CONFIG_FILE
 
 # Set chosen email
