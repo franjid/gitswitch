@@ -3,7 +3,7 @@
 GIT_SWITCH_IDENTITIES_FILE=~/.gitswitch
 GIT_CONFIG_FILE=~/.gitconfig
 
-declare -A identitiyEmailArray
+declare -A identityEmailArray
 declare -a identitiesArray
 count=1
 
@@ -18,7 +18,7 @@ do
         email="$(echo $line | sed 's/^\email=\(.*\)$/\1/g')"
     fi
 
-    identitiyEmailArray[$identityId]=$email
+    identityEmailArray[$identityId]=$email
 done
 
 echo "## Possible options ##\n"
@@ -26,14 +26,14 @@ echo "## Possible options ##\n"
 count=1
 for each in "${identitiesArray[@]}"
 do
-  echo "($count)" "$each" " \t -> email = $identitiyEmailArray[$each]"
+  echo "($count)" "$each" " \t -> email = $identityEmailArray[$each]"
   count=$((count+1))
 done
 
 echo "\nWhich option do you want to use? "
 read option
 
-emailChosen=$identitiyEmailArray[$identitiesArray[$option]]
+emailChosen=$identityEmailArray[$identitiesArray[$option]]
 
 # Remove lines with previous references to the chosen email
 sed -i '' '/email = '$emailChosen'/d' $GIT_CONFIG_FILE
