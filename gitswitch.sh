@@ -7,6 +7,8 @@ declare -A identityEmailArray
 declare -a identitiesArray
 count=1
 
+echo "Current Git email:" "$(git config user.email)\n"
+
 # Read identities
 cat $GIT_SWITCH_IDENTITIES_FILE | while read line
 do
