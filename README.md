@@ -32,6 +32,7 @@ gitswitch
 In case (you don't trust me and) you want to check by yourself that it was correctly changed
 
 ```
+git config user.name
 git config user.email
 ```
 
